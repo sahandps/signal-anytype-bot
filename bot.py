@@ -9,6 +9,12 @@ from src.anytype_lib import AnytypeClient
 # Load environment variables
 load_dotenv()
 
+# Ensure Java is in PATH (Fix for "JAVA_HOME is not set" error)
+java_home = r"C:\Program Files\Java\jdk-21.0.10"
+if os.path.exists(java_home):
+    os.environ["JAVA_HOME"] = java_home
+    os.environ["PATH"] = os.path.join(java_home, "bin") + os.pathsep + os.environ["PATH"]
+
 # Configuration
 SIGNAL_ACCOUNT = os.getenv("SIGNAL_ACCOUNT")
 ANYTYPE_API_KEY = os.getenv("ANYTYPE_API_KEY")
