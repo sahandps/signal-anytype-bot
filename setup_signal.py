@@ -2,7 +2,7 @@
 import os
 import sys
 import qrcode
-from signal_lib import SignalClient, SIGNAL_CLI_PATH
+from src.signal_lib import SignalClient, SIGNAL_CLI_PATH
 import subprocess
 
 def main():

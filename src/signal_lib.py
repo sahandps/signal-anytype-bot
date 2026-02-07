@@ -5,7 +5,8 @@ import os
 import time
 from typing import Generator, Optional, Dict, Any
 
-SIGNAL_CLI_PATH = os.path.join(os.path.dirname(__file__), "signal-cli-0.13.23", "bin", "signal-cli.bat")
+# signal-cli is in the root directory, so we go up one level from src/
+SIGNAL_CLI_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "signal-cli-0.13.23", "bin", "signal-cli.bat")
 
 class SignalClient:
     def __init__(self, account: str):

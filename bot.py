@@ -3,8 +3,8 @@ import sys
 import os
 import time
 from dotenv import load_dotenv
-from signal_lib import SignalClient
-from anytype_lib import AnytypeClient
+from src.signal_lib import SignalClient
+from src.anytype_lib import AnytypeClient
 
 # Load environment variables
 load_dotenv()
