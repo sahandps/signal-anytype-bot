@@ -95,6 +95,23 @@ def main():
                 message = message[5:].strip()
                 title = "New Task"
             
+            elif message.lower().startswith("search:") or message.lower().startswith("find:"):
+                query = message.split(":", 1)[1].strip()
+                print(f"Searching for: {query}")
+                results = anytype_client.search_objects(query)
+                
+                if results:
+                    response = f"🔍 Found {len(results)} results for '{query}':\n"
+                    for obj in results:
+                        oid = obj.get('id')
+                        title = obj.get('details', {}).get('title') or "Untitled"
+                        response += f"- {title} ({oid})\n"
+                else:
+                    response = f"❌ No results found for '{query}'"
+                
+                signal_client.send_message(source, response)
+                continue # Skip creation logic
+            
             # Send to Anytype
             try:
                 result = anytype_client.create_object(obj_type, message, title=title)
