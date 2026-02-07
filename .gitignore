@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment variables
+.env
+
+# Signal CLI (binaries and data)
+signal-cli-*/
+signal-cli.tar.gz
+signal-cli.zip
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
