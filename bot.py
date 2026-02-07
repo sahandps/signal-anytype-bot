@@ -60,7 +60,7 @@ def main():
                             # Only notify if it looks "fresh" or we assume all unseen are new?
                             # Let's simple-notify for now.
                             title = obj.get('details', {}).get('title') or "Untitled Object"
-                            msg = f"🆕 Anytype Update: {title}\nID: {oid}"
+                            msg = f"Anytype Update: {title}\nID: {oid}"
                             signal_client.send_message(SIGNAL_ACCOUNT, msg)
                             
                 time.sleep(60) # Poll every minute
@@ -101,13 +101,13 @@ def main():
                 results = anytype_client.search_objects(query)
                 
                 if results:
-                    response = f"🔍 Found {len(results)} results for '{query}':\n"
+                    response = f"Found {len(results)} results for '{query}':\n"
                     for obj in results:
                         oid = obj.get('id')
                         title = obj.get('details', {}).get('title') or "Untitled"
                         response += f"- {title} ({oid})\n"
                 else:
-                    response = f"❌ No results found for '{query}'"
+                    response = f"No results found for '{query}'"
                 
                 signal_client.send_message(source, response)
                 continue # Skip creation logic
